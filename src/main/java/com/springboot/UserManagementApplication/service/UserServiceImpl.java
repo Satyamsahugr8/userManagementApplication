@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -26,8 +27,8 @@ public class UserServiceImpl implements UserService{
 	}
     
 	@Override
-	public User findById(@RequestBody long userId) {
-		User s = null;
+	public User findById(@RequestBody int userId) {
+		User s = userRepository.findById(userId).get();
 		return s;
 	}
 //	@Override
@@ -38,7 +39,8 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public User delete(User existingUser) {
-		return null;
+		userRepository.delete(existingUser);
+		return existingUser;
 	}
 
 	

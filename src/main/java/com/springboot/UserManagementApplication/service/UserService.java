@@ -16,7 +16,7 @@ public interface UserService {
 	List<User> getAllUsers();
 
 
-	User findById(long userId);
+	User findById(int userId);
 
 
 	User delete(User existingUser);

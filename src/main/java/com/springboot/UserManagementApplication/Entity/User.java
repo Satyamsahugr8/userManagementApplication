@@ -9,7 +9,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int id;
 	String firstName;
-	String LastName;
+	String lastName;
 	int age;
 
 	public int getId() {
@@ -20,20 +20,20 @@ public class User {
 		this.id = id;
 	}
 
-	public String getFirstName() {
+	public String getfirstName() {
 		return firstName;
 	}
 
-	public void setFirstName(String firstName) {
+	public void setfirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-	public String getLastName() {
-		return LastName;
+	public String getlastName() {
+		return lastName;
 	}
 
-	public void setLastName(String lastName) {
-		LastName = lastName;
+	public void setlastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public int getAge() {
@@ -48,7 +48,7 @@ public class User {
 		super();
 		this.id = id;
 		this.firstName = firstName;
-		LastName = lastName;
+		lastName = lastName;
 		this.age = age;
 	}
 

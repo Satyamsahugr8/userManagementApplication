@@ -16,31 +16,32 @@ public class UserController {
 	@Autowired
 	public UserService userService;
 
-	@PostMapping("/user")
+	@PostMapping("/addUser")
 	public ResponseEntity<User> saveUser(@RequestBody User user) {
 		User savedUser = userService.saveUser(user);
 		return new ResponseEntity<User>(savedUser, HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/users")
+	@GetMapping("/getAllUsers")
 	public ResponseEntity<List<User>> getAllUsers() {
 		return new ResponseEntity<List<User>>(userService.getAllUsers(),HttpStatus.OK);
 	}
 	
 	@PutMapping("/{id}")
-	public User updateUser(@RequestBody User user, @PathVariable ("id") long userId) {
-		User existingUser = this.userService.findById(userId);
-		     existingUser.setFirstName(user.getFirstName());
-			 existingUser.setLastName(user.getLastName());
+	public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable ("id") int userId) {
+		User existingUser = userService.findById(userId);
+		     existingUser.setfirstName(user.getfirstName());
+			 existingUser.setlastName(user.getlastName());
 			 existingUser.setAge(user.getAge());
-			 return this.userService.saveUser(existingUser);
+			 userService.saveUser(existingUser);
+			 return new ResponseEntity<User>(existingUser,HttpStatus.ACCEPTED);
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<User> deleteUser(@PathVariable ("id") long userId) {
-		User existingUser = this.userService.findById(userId);
-		User deleteUser = this.userService.delete(existingUser);
-		return ResponseEntity.ok().build();
+	public ResponseEntity<User> deleteUser(@PathVariable ("id") int userId) {
+		User existingUser = userService.findById(userId);
+		User deleteUser = userService.delete(existingUser);
+		return new ResponseEntity<User>(existingUser, HttpStatus.OK);
 	}
 
 }
