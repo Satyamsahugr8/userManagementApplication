@@ -9,21 +9,13 @@ public interface UserService {
 	
 	User saveUser(User user);
 
-
-//	User getAllUsers(User user);
-
-
 	List<User> getAllUsers();
 
+	User getUserById(int userId);
 
-	User findById(int userId);
+	void delete(User existingUser);
 
+	void deleteAllUser();
 
-	User delete(User existingUser);
-
-
-
-
-	
-
+	User updateUser(User user, User existingUser);
 }

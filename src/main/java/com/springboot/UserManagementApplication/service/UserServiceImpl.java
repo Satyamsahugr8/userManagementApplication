@@ -17,32 +17,36 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public User saveUser(User user) {
-		
 		return userRepository.save(user);
-		
 	}
+
     @Override
 	public List<User> getAllUsers() {
 		return (List<User>) userRepository.findAll();
 	}
     
 	@Override
-	public User findById(@RequestBody int userId) {
+	public User getUserById(@RequestBody int userId) {
 		User s = userRepository.findById(userId).get();
 		return s;
 	}
-//	@Override
-//	public User delete(User existingUser) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 	
 	@Override
-	public User delete(User existingUser) {
+	public void delete(User existingUser) {
 		userRepository.delete(existingUser);
-		return existingUser;
 	}
 
-	
+	@Override
+	public void deleteAllUser() {
+		userRepository.deleteAll();
+	}
+
+	@Override
+	public User updateUser(User existingUser, User user) {
+		existingUser.setfirstName(user.getfirstName());
+		existingUser.setlastName(user.getlastName());
+		existingUser.setAge(user.getAge());
+		return existingUser;
+	}
 
 }
