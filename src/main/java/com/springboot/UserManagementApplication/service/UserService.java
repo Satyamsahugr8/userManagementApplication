@@ -13,7 +13,7 @@ public interface UserService {
 
 	User getUserById(int userId);
 
-	void delete(User existingUser);
+	void deleteUser(User existingUser);
 
 	void deleteAllUser();
 
