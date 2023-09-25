@@ -26,22 +26,31 @@ public class UserController {
 	public ResponseEntity<List<User>> getAllUsers() {
 		return new ResponseEntity<List<User>>(userService.getAllUsers(),HttpStatus.OK);
 	}
+
+	@GetMapping("/getUser/{id}")
+	public ResponseEntity<User> getUserbyId(@PathVariable ("id") int id) {
+		return new ResponseEntity<User>(userService.getUserById(id), HttpStatus.OK);
+	}
 	
-	@PutMapping("/{id}")
+	@PutMapping("/updateUser/{id}")
 	public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable ("id") int userId) {
-		User existingUser = userService.findById(userId);
-		     existingUser.setfirstName(user.getfirstName());
-			 existingUser.setlastName(user.getlastName());
-			 existingUser.setAge(user.getAge());
-			 userService.saveUser(existingUser);
-			 return new ResponseEntity<User>(existingUser,HttpStatus.ACCEPTED);
+		User existingUser = userService.getUserById(userId);
+		userService.updateUser(existingUser, user);
+		userService.saveUser(existingUser);
+		return new ResponseEntity<User>(existingUser, HttpStatus.ACCEPTED);
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<User> deleteUser(@PathVariable ("id") int userId) {
-		User existingUser = userService.findById(userId);
-		User deleteUser = userService.delete(existingUser);
-		return new ResponseEntity<User>(existingUser, HttpStatus.OK);
+	public ResponseEntity<String> deleteUser(@PathVariable ("id") int userId) {
+		User existingUser = userService.getUserById(userId);
+		userService.delete(existingUser);
+		return new ResponseEntity<String>("user Deleted", HttpStatus.OK);
+	}
+
+	@DeleteMapping("/deleteAll")
+	public ResponseEntity<String> deleteAllUsers() {
+		userService.deleteAllUser();
+		return new ResponseEntity<String>("all user Deleted", HttpStatus.OK);
 	}
 
 }
