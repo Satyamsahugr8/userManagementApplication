@@ -24,12 +24,13 @@ public class UserController {
 	
 	@GetMapping("/getAllUsers")
 	public ResponseEntity<List<User>> getAllUsers() {
-		return new ResponseEntity<List<User>>(userService.getAllUsers(),HttpStatus.OK);
+		return new ResponseEntity<List<User>>(userService.getAllUsers(), HttpStatus.OK);
 	}
 
 	@GetMapping("/getUser/{id}")
 	public ResponseEntity<User> getUserbyId(@PathVariable ("id") int id) {
-		return new ResponseEntity<User>(userService.getUserById(id), HttpStatus.OK);
+		User user = userService.getUserById(id);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 	
 	@PutMapping("/updateUser/{id}")
