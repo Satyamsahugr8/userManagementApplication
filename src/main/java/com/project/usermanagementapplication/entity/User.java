@@ -1,4 +1,4 @@
-package com.springboot.UserManagementApplication.Entity;
+package com.project.usermanagementapplication.entity;
 
 import javax.persistence.*;
 
@@ -48,7 +48,7 @@ public class User {
 		super();
 		this.id = id;
 		this.firstName = firstName;
-		lastName = lastName;
+		this.lastName = lastName;
 		this.age = age;
 	}
 

@@ -1,7 +1,7 @@
-package com.springboot.UserManagementApplication.service;
+package com.project.usermanagementapplication.service;
 
 
-import com.springboot.UserManagementApplication.Entity.User;
+import com.project.usermanagementapplication.entity.User;
 
 import java.util.List;
 

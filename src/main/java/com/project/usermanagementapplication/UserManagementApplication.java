@@ -1,8 +1,7 @@
-package com.springboot.UserManagementApplication;
+package com.project.usermanagementapplication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Component;
 
 @SpringBootApplication
 public class UserManagementApplication {
